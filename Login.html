@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#285943"
+    >
+
+    <meta
+        name="description"
+        content="Calendário Biodinâmico 2026 a 2030"
+    >
+
+    <title>Calendário Biodinâmico</title>
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --green-dark: #183d2b;
+            --green: #285943;
+            --green-light: #e8f3eb;
+
+            --background: #f3f7f4;
+            --white: #ffffff;
+
+            --text: #26332b;
+            --muted: #718078;
+
+            --border: #dbe5de;
+
+            --root: #9b59b6;
+            --leaf: #2e8b57;
+            --flower: #e67e22;
+            --fruit: #c0392b;
+
+            --shadow:
+                0 15px 45px rgba(27, 69, 44, .10);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef6ef,
+                    #f9fbf9
+                );
+
+            color: var(--text);
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           LOGIN
+        ===================================================== */
+
+        #loginScreen {
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .login-card {
+            width: min(430px, 100%);
+
+            background: var(--white);
+
+            border-radius: 24px;
+
+            padding: 38px;
+
+            box-shadow: var(--shadow);
+
+            border: 1px solid var(--border);
+        }
+
+        .logo {
+            width: 65px;
+            height: 65px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 20px;
+
+            border-radius: 18px;
+
+            background: var(--green);
+
+            color: white;
+
+            font-size: 30px;
+        }
+
+        .login-card h1 {
+            text-align: center;
+
+            color: var(--green-dark);
+
+            margin-bottom: 8px;
+        }
+
+        .login-subtitle {
+            text-align: center;
+
+            color: var(--muted);
+
+            font-size: .92rem;
+
+            line-height: 1.5;
+
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: .85rem;
+
+            font-weight: 700;
+
+            margin-bottom: 7px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+
+            height: 50px;
+
+            padding: 0 45px 0 15px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 11px;
+
+            outline: none;
+
+            background: #fbfdfb;
+        }
+
+        .input-wrapper input:focus {
+            border-color: var(--green);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(40, 89, 67, .10);
+        }
+
+        .password-toggle {
+            position: absolute;
+
+            right: 12px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 1.1rem;
+
+            color: var(--muted);
+        }
+
+        .login-button {
+            width: 100%;
+
+            height: 50px;
+
+            margin-top: 8px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background: var(--green);
+
+            color: white;
+
+            font-weight: 800;
+
+            transition: .2s;
+        }
+
+        .login-button:hover {
+            background: var(--green-dark);
+
+            transform: translateY(-1px);
+        }
+
+        .login-error {
+            display: none;
+
+            margin-top: 14px;
+
+            padding: 10px;
+
+            border-radius: 8px;
+
+            background: #fff0f0;
+
+            color: #a93232;
+
+            font-size: .82rem;
+
+            text-align: center;
+        }
+
+        .login-info {
+            margin-top: 20px;
+
+            padding-top: 18px;
+
+            border-top:
+                1px solid var(--border);
+
+            text-align: center;
+
+            font-size: .72rem;
+
+            color: var(--muted);
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           APLICAÇÃO
+        ===================================================== */
+
+        #app {
+            display: none;
+
+            min-height: 100vh;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            background:
+                rgba(255,255,255,.94);
+
+            backdrop-filter:
+                blur(12px);
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .navbar-inner {
+            width: min(1400px, 94%);
+
+            min-height: 70px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-weight: 900;
+
+            color: var(--green-dark);
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: var(--green);
+
+            color: white;
+
+            border-radius: 11px;
+        }
+
+        .user-area {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .user-email {
+            color: var(--muted);
+
+            font-size: .82rem;
+        }
+
+        .logout-button {
+            border:
+                1px solid var(--border);
+
+            background: white;
+
+            color: var(--text);
+
+            border-radius: 9px;
+
+            padding: 8px 12px;
+
+            font-weight: 700;
+        }
+
+        .logout-button:hover {
+            background: #f5f7f5;
+        }
+
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .container {
+            width: min(1400px, 94%);
+
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            margin-top: 25px;
+
+            background: var(--green);
+
+            color: white;
+
+            border-radius: 22px;
+
+            padding: clamp(25px, 5vw, 40px);
+
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size:
+                clamp(1.6rem, 4vw, 2.7rem);
+
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            max-width: 800px;
+
+            line-height: 1.6;
+
+            opacity: .9;
+        }
+
+
+        /* =====================================================
+           CONTROLES
+        ===================================================== */
+
+        .controls {
+            margin-top: 25px;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(150px, 220px)
+                minmax(170px, 250px)
+                1fr;
+
+            gap: 14px;
+
+            align-items: end;
+        }
+
+        .control label {
+            display: block;
+
+            font-size: .78rem;
+
+            font-weight: 700;
+
+            margin-bottom: 6px;
+
+            opacity: .9;
+        }
+
+        .control select,
+        .control button {
+            width: 100%;
+
+            height: 46px;
+
+            border-radius: 10px;
+
+            padding: 0 13px;
+
+            border: 1px solid var(--border);
+
+            background: white;
+
+            color: var(--text);
+        }
+
+        .control button {
+            background: var(--green-dark);
+
+            color: white;
+
+            border-color: transparent;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           PAINEL
+        ===================================================== */
+
+        .panel {
+            margin: 25px 0;
+
+            background: white;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: clamp(14px, 3vw, 25px);
+
+            box-shadow: var(--shadow);
+        }
+
+        .month-title {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 18px;
+        }
+
+        .month-title h2 {
+            font-size:
+                clamp(1.25rem, 3vw, 2rem);
+        }
+
+        .month-title span {
+            color: var(--muted);
+
+            font-size: .85rem;
+        }
+
+
+        /* =====================================================
+           LEGENDA
+        ===================================================== */
+
+        .legend {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-bottom: 18px;
+        }
+
+        .legend-item {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            background: #f7f9f7;
+
+            border-radius: 50px;
+
+            padding: 7px 11px;
+
+            font-size: .78rem;
+
+            font-weight: 700;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+
+            border-radius: 50%;
+        }
+
+        .root-dot {
+            background: var(--root);
+        }
+
+        .leaf-dot {
+            background: var(--leaf);
+        }
+
+        .flower-dot {
+            background: var(--flower);
+        }
+
+        .fruit-dot {
+            background: var(--fruit);
+        }
+
+
+        /* =====================================================
+           CALENDÁRIO
+        ===================================================== */
+
+        .calendar {
+            display: grid;
+
+            grid-template-columns:
+                repeat(7, minmax(0, 1fr));
+
+            gap: 6px;
+        }
+
+        .weekday {
+            text-align: center;
+
+            padding: 10px 3px;
+
+            color: var(--muted);
+
+            font-size: .75rem;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+        }
+
+        .day {
+            min-height: 145px;
+
+            padding: 10px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 11px;
+
+            background: white;
+
+            transition: .15s;
+
+            overflow: hidden;
+        }
+
+        .day:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 18px rgba(0,0,0,.07);
+        }
+
+        .day.empty {
+            border-color: transparent;
+
+            background: #fafcfb;
+        }
+
+        .day.sunday {
+            background: #fff7f7;
+        }
+
+        .day.today {
+            outline:
+                3px solid #f1c40f;
+
+            outline-offset: -3px;
+        }
+
+        .day-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 7px;
+        }
+
+        .day-number {
+            font-size: 1.1rem;
+
+            font-weight: 900;
+        }
+
+        .lunar-symbol {
+            font-size: 1.2rem;
+        }
+
+        .phase {
+            font-size: .68rem;
+
+            color: var(--muted);
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            margin-bottom: 8px;
+        }
+
+        .category {
+            display: inline-block;
+
+            padding: 5px 8px;
+
+            border-radius: 6px;
+
+            color: white;
+
+            font-size: .67rem;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+        .category.root {
+            background: var(--root);
+        }
+
+        .category.leaf {
+            background: var(--leaf);
+        }
+
+        .category.flower {
+            background: var(--flower);
+        }
+
+        .category.fruit {
+            background: var(--fruit);
+        }
+
+        .description {
+            font-size: .68rem;
+
+            color: var(--muted);
+
+            line-height: 1.35;
+        }
+
+        .moon-info {
+            margin-top: 8px;
+
+            color: var(--muted);
+
+            font-size: .65rem;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            text-align: center;
+
+            color: var(--muted);
+
+            font-size: .75rem;
+
+            line-height: 1.6;
+
+            padding: 10px 0 35px;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .controls {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .controls .control:last-child {
+                grid-column:
+                    1 / -1;
+            }
+
+            .day {
+                min-height: 125px;
+            }
+
+        }
+
+
+        /* =====================================================
+           CELULAR
+        ===================================================== */
+
+        @media (max-width: 650px) {
+
+            .navbar-inner {
+                min-height: 62px;
+            }
+
+            .brand-text {
+                display: none;
+            }
+
+            .user-email {
+                display: none;
+            }
+
+            .hero {
+                border-radius: 15px;
+
+                margin-top: 14px;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            .controls .control:last-child {
+                grid-column: auto;
+            }
+
+            .calendar {
+                gap: 3px;
+            }
+
+            .weekday {
+                font-size: .58rem;
+
+                padding: 7px 0;
+            }
+
+            .day {
+                min-height: 105px;
+
+                padding: 6px;
+
+                border-radius: 7px;
+            }
+
+            .day-number {
+                font-size: .9rem;
+            }
+
+            .lunar-symbol {
+                font-size: .9rem;
+            }
+
+            .phase {
+                font-size: .57rem;
+            }
+
+            .category {
+                font-size: .55rem;
+
+                padding: 4px 5px;
+            }
+
+            .description {
+                display: none;
+            }
+
+            .moon-info {
+                font-size: .55rem;
+            }
+
+            .login-card {
+                padding: 27px 21px;
+
+                border-radius: 18px;
+            }
+        }
+
+
+        /* =====================================================
+           CELULARES PEQUENOS
+        ===================================================== */
+
+        @media (max-width: 390px) {
+
+            .day {
+                min-height: 88px;
+
+                padding: 4px;
+            }
+
+            .category {
+                max-width: 100%;
+
+                white-space: nowrap;
+
+                overflow: hidden;
+
+                text-overflow: ellipsis;
+            }
+
+            .moon-info {
+                display: none;
+            }
+        }
+
+
+        /* =====================================================
+           IMPRESSÃO
+        ===================================================== */
+
+        @media print {
+
+            .navbar,
+            .controls,
+            footer {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .hero {
+                color: black;
+
+                background: white;
+
+                box-shadow: none;
+
+                border: 1px solid #ddd;
+            }
+
+            .panel {
+                box-shadow: none;
+            }
+
+            .day {
+                break-inside: avoid;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- ========================================================
+     LOGIN
+========================================================= -->
+
+<section id="loginScreen">
+
+    <div class="login-card">
+
+        <div class="logo">
+            🌱
+        </div>
+
+        <h1>
+            Calendário Biodinâmico
+        </h1>
+
+        <p class="login-subtitle">
+            Entre para acessar seu calendário biodinâmico
+            de 2026 a 2030.
+        </p>
+
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label for="email">
+                    E-mail
+                </label>
+
+                <div class="input-wrapper">
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="seu@email.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Senha
+                </label>
+
+                <div class="input-wrapper">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        minlength="6"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="togglePassword"
+                        aria-label="Mostrar senha"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-button"
+            >
+                Entrar
+            </button>
+
+
+            <div
+                id="loginError"
+                class="login-error"
+            >
+                E-mail ou senha inválidos.
+            </div>
+
+        </form>
+
+
+        <div class="login-info">
+            Sistema demonstrativo.
+            Para autenticação real e segura,
+            conecte este formulário a um servidor
+            ou serviço de autenticação.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================
+     APLICAÇÃO
+========================================================= -->
+
+<div id="app">
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="navbar-inner">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    🌱
+                </div>
+
+                <span class="brand-text">
+                    Calendário Biodinâmico
+                </span>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <span
+                    id="loggedUser"
+                    class="user-email"
+                ></span>
+
+                <button
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    Sair
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <div class="container">
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <h1>
+                Calendário Biodinâmico
+            </h1>
+
+            <p>
+                Consulte os ritmos lunares e a classificação
+                biodinâmica de cada dia entre 2026 e 2030.
+            </p>
+
+
+            <div class="controls">
+
+                <div class="control">
+
+                    <label for="year">
+                        Ano
+                    </label>
+
+                    <select id="year">
+
+                        <option value="2026">
+                            2026
+                        </option>
+
+                        <option value="2027">
+                            2027
+                        </option>
+
+                        <option value="2028">
+                            2028
+                        </option>
+
+                        <option value="2029">
+                            2029
+                        </option>
+
+                        <option value="2030">
+                            2030
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="control">
+
+                    <label for="month">
+                        Mês
+                    </label>
+
+                    <select id="month">
+
+                        <option value="0">
+                            Janeiro
+                        </option>
+
+                        <option value="1">
+                            Fevereiro
+                        </option>
+
+                        <option value="2">
+                            Março
+                        </option>
+
+                        <option value="3">
+                            Abril
+                        </option>
+
+                        <option value="4">
+                            Maio
+                        </option>
+
+                        <option value="5">
+                            Junho
+                        </option>
+
+                        <option value="6">
+                            Julho
+                        </option>
+
+                        <option value="7">
+                            Agosto
+                        </option>
+
+                        <option value="8">
+                            Setembro
+                        </option>
+
+                        <option value="9">
+                            Outubro
+                        </option>
+
+                        <option value="10">
+                            Novembro
+                        </option>
+
+                        <option value="11">
+                            Dezembro
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="control">
+
+                    <button id="todayButton">
+                        📅 Mês atual
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CALENDÁRIO -->
+
+        <section class="panel">
+
+            <div class="month-title">
+
+                <h2 id="monthTitle">
+                    Janeiro de 2026
+                </h2>
+
+                <span id="daysCount">
+                    31 dias
+                </span>
+
+            </div>
+
+
+            <div class="legend">
+
+                <div class="legend-item">
+
+                    <span
+                        class="dot root-dot"
+                    ></span>
+
+                    🌱 Raiz
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="dot leaf-dot"
+                    ></span>
+
+                    🍃 Folha
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="dot flower-dot"
+                    ></span>
+
+                    🌸 Flor
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="dot fruit-dot"
+                    ></span>
+
+                    🍎 Fruto / Semente
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="calendar"
+                class="calendar"
+            ></div>
+
+        </section>
+
+
+        <footer>
+
+            Calendário biodinâmico para fins informativos.
+            A classificação matemática é uma aproximação
+            e não substitui uma publicação oficial.
+
+        </footer>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ==========================================================
+   LOGIN
+========================================================== */
+
+const loginScreen =
+    document.getElementById("loginScreen");
+
+const app =
+    document.getElementById("app");
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const loginError =
+    document.getElementById("loginError");
+
+const loggedUser =
+    document.getElementById("loggedUser");
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+const togglePassword =
+    document.getElementById("togglePassword");
+
+const passwordInput =
+    document.getElementById("password");
+
+
+/*
+   Demonstração de autenticação.
+
+   ATENÇÃO:
+
+   Isto NÃO deve ser utilizado como sistema
+   de autenticação de produção.
+
+   Em produção, a validação deve acontecer
+   no servidor.
+*/
+
+const DEMO_EMAIL =
+    "usuario@exemplo.com";
+
+const DEMO_PASSWORD =
+    "123456";
+
+
+loginForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim()
+                .toLowerCase();
+
+        const password =
+            passwordInput.value;
+
+
+        if (
+            email === DEMO_EMAIL &&
+            password === DEMO_PASSWORD
+        ) {
+
+            /*
+               Guarda somente a sessão demonstrativa.
+            */
+
+            sessionStorage.setItem(
+                "biodynamicUser",
+                email
+            );
+
+            showApp(email);
+
+        } else {
+
+            loginError.style.display =
+                "block";
+
+        }
+
+    }
+);
+
+
+/*
+   Mostrar / esconder senha
+*/
+
+togglePassword.addEventListener(
+    "click",
+    function() {
+
+        if (
+            passwordInput.type ===
+            "password"
+        ) {
+
+            passwordInput.type =
+                "text";
+
+            togglePassword.textContent =
+                "🙈";
+
+        } else {
+
+            passwordInput.type =
+                "password";
+
+            togglePassword.textContent =
+                "👁";
+
+        }
+
+    }
+);
+
+
+/*
+   Logout
+*/
+
+logoutButton.addEventListener(
+    "click",
+    function() {
+
+        sessionStorage.removeItem(
+            "biodynamicUser"
+        );
+
+        app.style.display =
+            "none";
+
+        loginScreen.style.display =
+            "flex";
+
+        loginForm.reset();
+
+    }
+);
+
+
+/*
+   Mostrar aplicação
+*/
+
+function showApp(email) {
+
+    loginScreen.style.display =
+        "none";
+
+    app.style.display =
+        "block";
+
+    loggedUser.textContent =
+        email;
+
+    renderCalendar();
+
+}
+
+
+/*
+   Verificar sessão existente
+*/
+
+const existingUser =
+    sessionStorage.getItem(
+        "biodynamicUser"
+    );
+
+if (existingUser) {
+
+    showApp(existingUser);
+
+}
+
+
+/* ==========================================================
+   CALENDÁRIO
+========================================================== */
+
+const months = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro"
+];
+
+const weekdays = [
+    "Dom",
+    "Seg",
+    "Ter",
+    "Qua",
+    "Qui",
+    "Sex",
+    "Sáb"
+];
+
+
+const yearSelect =
+    document.getElementById("year");
+
+const monthSelect =
+    document.getElementById("month");
+
+const calendar =
+    document.getElementById("calendar");
+
+const monthTitle =
+    document.getElementById("monthTitle");
+
+const daysCount =
+    document.getElementById("daysCount");
+
+const todayButton =
+    document.getElementById("todayButton");
+
+
+/* ==========================================================
+   JULIAN DAY
+========================================================== */
+
+function julianDay(date) {
+
+    let year =
+        date.getUTCFullYear();
+
+    let month =
+        date.getUTCMonth() + 1;
+
+    const day =
+        date.getUTCDate() +
+        (
+            date.getUTCHours() +
+            date.getUTCMinutes() / 60
+        ) / 24;
+
+    if (month <= 2) {
+
+        year--;
+
+        month += 12;
+
+    }
+
+    const A =
+        Math.floor(year / 100);
+
+    const B =
+        2 -
+        A +
+        Math.floor(A / 4);
+
+    return (
+        Math.floor(
+            365.25 *
+            (year + 4716)
+        ) +
+
+        Math.floor(
+            30.6001 *
+            (month + 1)
+        ) +
+
+        day +
+        B -
+        1524.5
+    );
+
+}
+
+
+/* ==========================================================
+   IDADE DA LUA
+========================================================== */
+
+function moonAge(date) {
+
+    const knownNewMoon =
+        Date.UTC(
+            2000,
+            0,
+            6,
+            18,
+            14
+        );
+
+    const days =
+        (
+            date.getTime() -
+            knownNewMoon
+        ) / 86400000;
+
+    const cycle =
+        29.530588853;
+
+    return (
+        (
+            days % cycle
+        ) + cycle
+    ) % cycle;
+
+}
+
+
+/* ==========================================================
+   FASE LUNAR
+========================================================== */
+
+function moonPhase(date) {
+
+    const age =
+        moonAge(date);
+
+    if (age < 1.85) {
+
+        return {
+            name: "Lua Nova",
+            symbol: "●"
+        };
+
+    }
+
+    if (age < 7.38) {
+
+        return {
+            name: "Lua Crescente",
+            symbol: "◐"
+        };
+
+    }
+
+    if (age < 9.23) {
+
+        return {
+            name: "Quarto Crescente",
+            symbol: "◑"
+        };
+
+    }
+
+    if (age < 14.77) {
+
+        return {
+            name: "Lua Crescente",
+            symbol: "◑"
+        };
+
+    }
+
+    if (age < 16.61) {
+
+        return {
+            name: "Lua Cheia",
+            symbol: "●"
+        };
+
+    }
+
+    if (age < 22.15) {
+
+        return {
+            name: "Lua Minguante",
+            symbol: "◒"
+        };
+
+    }
+
+    if (age < 23.99) {
+
+        return {
+            name: "Quarto Minguante",
+            symbol: "◓"
+        };
+
+    }
+
+    return {
+        name: "Lua Minguante",
+        symbol: "◓"
+    };
+
+}
+
+
+/* ==========================================================
+   LONGITUDE DA LUA
+========================================================== */
+
+function moonLongitude(date) {
+
+    const jd =
+        julianDay(date);
+
+    const T =
+        (jd - 2451545) /
+        36525;
+
+    const L =
+        218.3164477 +
+        481267.88123421 * T;
+
+    const M =
+        134.9633964 +
+        477198.8675055 * T;
+
+    const Ms =
+        357.5291092 +
+        35999.0502909 * T;
+
+    const D =
+        297.8501921 +
+        445267.1114034 * T;
+
+    const rad =
+        Math.PI / 180;
+
+    let longitude =
+        L +
+
+        6.289 *
+        Math.sin(M * rad) +
+
+        1.274 *
+        Math.sin(
+            (2 * D - M) * rad
+        ) +
+
+        0.658 *
+        Math.sin(
+            2 * D * rad
+        ) +
+
+        0.214 *
+        Math.sin(
+            2 * M * rad
+        ) -
+
+        0.186 *
+        Math.sin(
+            Ms * rad
+        );
+
+    return (
+        (
+            longitude % 360
+        ) + 360
+    ) % 360;
+
+}
+
+
+/* ==========================================================
+   SIGNO LUNAR
+========================================================== */
+
+function lunarSign(longitude) {
+
+    const signs = [
+
+        "Áries",
+        "Touro",
+        "Gêmeos",
+        "Câncer",
+        "Leão",
+        "Virgem",
+        "Libra",
+        "Escorpião",
+        "Sagitário",
+        "Capricórnio",
+        "Aquário",
+        "Peixes"
+
+    ];
+
+    return signs[
+        Math.floor(
+            longitude / 30
+        )
+    ];
+
+}
+
+
+/* ==========================================================
+   CLASSIFICAÇÃO
+========================================================== */
+
+function biodynamicCategory(sign) {
+
+    const categories = {
+
+        "Touro": [
+            "root",
+            "Raiz",
+            "🌱"
+        ],
+
+        "Virgem": [
+            "root",
+            "Raiz",
+            "🌱"
+        ],
+
+        "Capricórnio": [
+            "root",
+            "Raiz",
+            "🌱"
+        ],
+
+
+        "Câncer": [
+            "leaf",
+            "Folha",
+            "🍃"
+        ],
+
+        "Escorpião": [
+            "leaf",
+            "Folha",
+            "🍃"
+        ],
+
+        "Peixes": [
+            "leaf",
+            "Folha",
+            "🍃"
+        ],
+
+
+        "Gêmeos": [
+            "flower",
+            "Flor",
+            "🌸"
+        ],
+
+        "Libra": [
+            "flower",
+            "Flor",
+            "🌸"
+        ],
+
+        "Aquário": [
+            "flower",
+            "Flor",
+            "🌸"
+        ],
+
+
+        "Áries": [
+            "fruit",
+            "Fruto / Semente",
+            "🍎"
+        ],
+
+        "Leão": [
+            "fruit",
+            "Fruto / Semente",
+            "🍎"
+        ],
+
+        "Sagitário": [
+            "fruit",
+            "Fruto / Semente",
+            "🍎"
+        ]
+
+    };
+
+    return categories[sign];
+
+}
+
+
+/* ==========================================================
+   DADOS DO DIA
+========================================================== */
+
+function getDayData(
+    year,
+    month,
+    day
+) {
+
+    const date =
+        new Date(
+            Date.UTC(
+                year,
+                month,
+                day,
+                12
+            )
+        );
+
+    const phase =
+        moonPhase(date);
+
+    const longitude =
+        moonLongitude(date);
+
+    const sign =
+        lunarSign(longitude);
+
+    const category =
+        biodynamicCategory(sign);
+
+    return {
+        phase,
+        sign,
+        category
+    };
+
+}
+
+
+/* ==========================================================
+   RENDERIZAR
+========================================================== */
+
+function renderCalendar() {
+
+    const year =
+        Number(
+            yearSelect.value
+        );
+
+    const month =
+        Number(
+            monthSelect.value
+        );
+
+    const firstDay =
+        new Date(
+            year,
+            month,
+            1
+        );
+
+    const lastDay =
+        new Date(
+            year,
+            month + 1,
+            0
+        );
+
+    const totalDays =
+        lastDay.getDate();
+
+    const firstWeekday =
+        firstDay.getDay();
+
+
+    monthTitle.textContent =
+        `${months[month]} de ${year}`;
+
+    daysCount.textContent =
+        `${totalDays} dias`;
+
+
+    calendar.innerHTML = "";
+
+
+    weekdays.forEach(
+        weekday => {
+
+            const element =
+                document.createElement(
+                    "div"
+                );
+
+            element.className =
+                "weekday";
+
+            element.textContent =
+                weekday;
+
+            calendar.appendChild(
+                element
+            );
+
+        }
+    );
+
+
+    for (
+        let i = 0;
+        i < firstWeekday;
+        i++
+    ) {
+
+        const empty =
+            document.createElement(
+                "div"
+            );
+
+        empty.className =
+            "day empty";
+
+        calendar.appendChild(
+            empty
+        );
+
+    }
+
+
+    for (
+        let day = 1;
+        day <= totalDays;
+        day++
+    ) {
+
+        const data =
+            getDayData(
+                year,
+                month,
+                day
+            );
+
+        const element =
+            document.createElement(
+                "div"
+            );
+
+        element.className =
+            "day";
+
+
+        const current =
+            new Date(
+                year,
+                month,
+                day
+            );
+
+
+        if (
+            current.getDay() === 0
+        ) {
+
+            element.classList.add(
+                "sunday"
+            );
+
+        }
+
+
+        const today =
+            new Date();
+
+        if (
+            today.getFullYear() === year &&
+            today.getMonth() === month &&
+            today.getDate() === day
+        ) {
+
+            element.classList.add(
+                "today"
+            );
+
+        }
+
+
+        const category =
+            data.category;
+
+
+        element.innerHTML = `
+
+            <div class="day-header">
+
+                <span class="day-number">
+                    ${day}
+                </span>
+
+                <span class="lunar-symbol">
+                    ${data.phase.symbol}
+                </span>
+
+            </div>
+
+            <div class="phase">
+                ${data.phase.name}
+            </div>
+
+            <div class="category ${category[0]}">
+                ${category[2]}
+                ${category[1]}
+            </div>
+
+            <div class="description">
+                ${getDescription(category[0])}
+            </div>
+
+            <div class="moon-info">
+                🌙 ${data.sign}
+            </div>
+
+        `;
+
+
+        element.title =
+            `${day}/${month + 1}/${year}
+Fase: ${data.phase.name}
+Lua: ${data.sign}
+Categoria: ${category[1]}`;
+
+
+        calendar.appendChild(
+            element
+        );
+
+    }
+
+}
+
+
+/* ==========================================================
+   DESCRIÇÕES
+========================================================== */
+
+function getDescription(type) {
+
+    if (type === "root") {
+
+        return "Período associado às raízes.";
+
+    }
+
+    if (type === "leaf") {
+
+        return "Período associado às folhas.";
+
+    }
+
+    if (type === "flower") {
+
+        return "Período associado às flores.";
+
+    }
+
+    return "Período associado a frutos e sementes.";
+
+}
+
+
+/* ==========================================================
+   EVENTOS
+========================================================== */
+
+yearSelect.addEventListener(
+    "change",
+    renderCalendar
+);
+
+monthSelect.addEventListener(
+    "change",
+    renderCalendar
+);
+
+
+todayButton.addEventListener(
+    "click",
+    function() {
+
+        const today =
+            new Date();
+
+        const year =
+            today.getFullYear();
+
+        if (
+            year < 2026 ||
+            year > 2030
+        ) {
+
+            alert(
+                "O calendário disponível é de 2026 a 2030."
+            );
+
+            return;
+        }
+
+        yearSelect.value =
+            year;
+
+        monthSelect.value =
+            today.getMonth();
+
+        renderCalendar();
+
+    }
+);
+
+
+/* ==========================================================
+   INICIALIZAÇÃO
+========================================================== */
+
+(function initialize() {
+
+    const today =
+        new Date();
+
+    if (
+        today.getFullYear() >= 2026 &&
+        today.getFullYear() <= 2030
+    ) {
+
+        yearSelect.value =
+            today.getFullYear();
+
+        monthSelect.value =
+            today.getMonth();
+
+    }
+
+    /*
+       Se não houver sessão,
+       a tela de login continua visível.
+    */
+
+})();
+
+</script>
+
+</body>
+</html>
